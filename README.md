@@ -31,9 +31,9 @@ python .../SRLSTM/test.py --test_set X --load_model XXX
 Test example models are given in ./savedata/X/testmodel/testmodel_XXX.tar\
 To test on UCY-univ, using 
 ```
-python .../SRLSTM/test.py --test_set 4 --load_model 324 batch_around_ped 64
+python .../SRLSTM/test.py --test_set 4 --load_model 324 --batch_around_ped 64
 ```
-To test on your own models, use train.py and change the arguments of  '--phase', '--train_model','--load_model'
+To test on your own models, use your train.py and change the arguments of  '--phase', '--train_model','--load_model'
 to 'test','YourModelName','YourModelEpoch'.
 
 ## Citation
