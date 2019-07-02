@@ -43,7 +43,6 @@ If you find this code useful, please cite us as
   title={SR-LSTM: State Refinement for LSTM towards Pedestrian Trajectory Prediction},
   author={Zhang, Pu and Ouyang, Wanli and Zhang, Pengfei and Xue, Jianru and Zheng, Nanning},
   booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-  number={CONF},
   year={2019}
 }
 ```
