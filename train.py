@@ -201,7 +201,7 @@ if __name__ == '__main__':
     p = parser.parse_args()
     p.save_dir=p.save_base_dir+str(p.test_set)+'/'
     p.model_dir=p.save_base_dir+str(p.test_set)+'/'+p.train_model+'/'
-    p.config=p.model_dir+'/config_train.yaml'
+    p.config=p.model_dir+'/config_'+p.phase+'.yaml'
 
     if not load_arg(p):
         save_arg(p)
