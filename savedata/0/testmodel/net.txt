@@ -1,0 +1,127 @@
+SRLSTM(
+  (inputLayer): Linear(in_features=2, out_features=32, bias=True)
+  (cell): LSTMCell(32, 64)
+  (gcn): GCN(
+    (relu): ReLU()
+    (ngate): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=64, bias=True)
+        (1): Sigmoid()
+      )
+    )
+    (relativeLayer): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=2, out_features=32, bias=True)
+        (1): ReLU()
+        (2): Dropout(p=0.1)
+      )
+    )
+    (W_nei): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=64, out_features=64, bias=False)
+      )
+    )
+    (WAr): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=1, bias=False)
+      )
+    )
+    (WAr1): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=32, bias=False)
+      )
+    )
+    (WAr2): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=32, out_features=1, bias=False)
+      )
+    )
+  )
+  (outputLayer): Linear(in_features=64, out_features=2, bias=True)
+  (dropout): Dropout(p=0.1)
+  (input_Ac): ReLU()
+)SRLSTM(
+  (inputLayer): Linear(in_features=2, out_features=32, bias=True)
+  (cell): LSTMCell(32, 64)
+  (gcn): GCN(
+    (relu): ReLU()
+    (ngate): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=64, bias=True)
+        (1): Sigmoid()
+      )
+    )
+    (relativeLayer): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=2, out_features=32, bias=True)
+        (1): ReLU()
+        (2): Dropout(p=0.1)
+      )
+    )
+    (W_nei): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=64, out_features=64, bias=False)
+      )
+    )
+    (WAr): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=1, bias=False)
+      )
+    )
+    (WAr1): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=32, bias=False)
+      )
+    )
+    (WAr2): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=32, out_features=1, bias=False)
+      )
+    )
+  )
+  (outputLayer): Linear(in_features=64, out_features=2, bias=True)
+  (dropout): Dropout(p=0.1)
+  (input_Ac): ReLU()
+)SRLSTM(
+  (inputLayer): Linear(in_features=2, out_features=32, bias=True)
+  (cell): LSTMCell(32, 64)
+  (gcn): GCN(
+    (relu): ReLU()
+    (ngate): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=64, bias=True)
+        (1): Sigmoid()
+      )
+    )
+    (relativeLayer): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=2, out_features=32, bias=True)
+        (1): ReLU()
+        (2): Dropout(p=0.1)
+      )
+    )
+    (W_nei): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=64, out_features=64, bias=False)
+      )
+    )
+    (WAr): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=1, bias=False)
+      )
+    )
+    (WAr1): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=160, out_features=32, bias=False)
+      )
+    )
+    (WAr2): MakeMLP(
+      (MLP): Sequential(
+        (0): Linear(in_features=32, out_features=1, bias=False)
+      )
+    )
+  )
+  (outputLayer): Linear(in_features=64, out_features=2, bias=True)
+  (dropout): Dropout(p=0.1)
+  (input_Ac): ReLU()
+)
