@@ -286,7 +286,8 @@ class SocialLSTM(nn.Module):
             # convert the distance meter into bin index,
             # -1e-10 is to make sure the result bin index is smaller than grid_size
             corr_index_true = corr_index_true // bin_size
-
+	    # may have bug using //
+            # corr_index_true = (corr_index_true / bin_size).floor()
             # make the bin index from [-grid_size/2, grid_size/2-1] to [0,grid_size-1]
             corr_index_true += self.args.grid_size / 2
             grid_index = corr_index_true[gridmask].view(-1, 2).long()
