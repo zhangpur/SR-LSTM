@@ -1,7 +1,7 @@
 # SRLSTM
 States Refinement LSTM\
 This is the code for 
-[SR-LSTM: State Refinement for LSTM towards Pedestrian Trajectory Prediction. CVPR2019](https://arxiv.org/pdf/1903.02793.pdf), together with Vanilla-LSTM and Social-LSTM models.
+[SR-LSTM: State Refinement for LSTM towards Pedestrian Trajectory Prediction. CVPR2019](https://arxiv.org/pdf/1903.02793.pdf).
 
 ## Environment
 The code is tested on Ubuntu 16.04, Python 3.5.4, numpy 1.13.3, pytorch 1.0.1.post2.
