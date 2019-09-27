@@ -1,0 +1,13 @@
+{WAq_std: 0.05, WAr_ac: '', base_dir: ., batch_around_ped: 128, batch_size: 8, clip: 1,
+  config: ./savedata/0/srlstm//config_train.yaml, dataset: eth5, dropratio: 0.1, gpu: 0,
+  grid_size: 4, hidden_dot_size: 32, ifbias_WAr: false, ifbias_gate: true, ifbias_nei: false,
+  ifbias_rel: true, ifdebug: false, ifdropout: true, ifsave_results: false, ifshow_detail: true,
+  ifvalid: true, input_embed_size: 32, input_size: 2, learning_rate: 0.0015, load_model: 0,
+  model: models.SRLSTM, model_dir: ./savedata/0/srlstm/, mp_ac: '', nei_ac: '', nei_drop: 0,
+  nei_hidden_size: 64, nei_layers: 1, nei_std: 0.01, nei_thred_slstm: 2, neighbor_thred: 10,
+  num_epochs: 300, obs_length: 8, output_size: 2, passing_time: 2, phase: train, pred_length: 12,
+  pretrain_load: 0, pretrain_model: '', randomRotate: true, rela_ac: relu, rela_drop: 0.1,
+  rela_embed_size: 32, rela_hidden_size: 16, rela_input: 2, rela_layers: 1, rela_std: 0.3,
+  rnn_size: 64, save_base_dir: ./savedata/, save_dir: ./savedata/0/, seq_length: 20,
+  show_step: 40, start_test: 100, std_in: 0.2, std_out: 0.1, test_batch_size: 4, test_set: 0,
+  train_model: srlstm, using_cuda: true, val_batch_size: 8, val_fraction: 0.2}

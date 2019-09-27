@@ -195,11 +195,10 @@ class GCN(nn.Module):
         inputs_part = nei_inputs[nei_index_t > 0]
         hi_t = nei_inputs.view((self.N, self.N, self.D)).permute(1, 0, 2).contiguous().view(-1, self.D)
 
-        tmp = torch.cat((r_t, hi_t[nei_index_t > 0],inputs_part), 1)
+        tmp = torch.cat((r_t, hi_t[nei_index_t > 0],nei_inputs[nei_index_t > 0]), 1)
 
         # Motion Gate
         nGate = self.ngate.MLP(tmp)
-        inputs_part = inputs_part * nGate
 
         # Attention
         Pos_t = torch.full((self.N * self.N,1), 0, device=torch.device("cuda")).view(-1)
@@ -214,7 +213,7 @@ class GCN(nn.Module):
 
         # Message Passing
         H = torch.full((self.N * self.N, self.D), 0, device=torch.device("cuda"))
-        H[nei_index_t > 0] = inputs_part
+        H[nei_index_t > 0] = inputs_part * nGate
         H[nei_index_t > 0] = H[nei_index_t > 0] * Pos_t[nei_index_t > 0].repeat(self.D, 1).transpose(0, 1)
         H = H.view(self.N, self.N, -1)
         H_sum = W.MLP(torch.sum(H, 1))

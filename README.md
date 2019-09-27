@@ -1,7 +1,7 @@
-# SRLSTM
+# SR-LSTM
 States Refinement LSTM\
 This is the code for 
-[SR-LSTM: State Refinement for LSTM towards Pedestrian Trajectory Prediction. CVPR2019](https://arxiv.org/pdf/1903.02793.pdf).
+[SR-LSTM: State Refinement for LSTM towards Pedestrian Trajectory Prediction. CVPR2019](https://arxiv.org/pdf/1903.02793.pdf), together with Vanilla-LSTM and Social-LSTM models.
 
 ## Environment
 The code is tested on Ubuntu 16.04, Python 3.5.4, numpy 1.13.3, pytorch 1.0.1.post2.
@@ -26,12 +26,12 @@ Detailed arguments description is given in train.py.
 
 ## Test
 ```
-python .../SRLSTM/test.py --test_set X --load_model XXX
+python .../SRLSTM/train.py --phase test --test_set X --load_model XXX
 ```
 Test example models are given in ./savedata/X/testmodel/testmodel_XXX.tar\
 To test on UCY-univ, using 
 ```
-python .../SRLSTM/test.py --test_set 4 --load_model 324 --batch_around_ped 64
+python .../SRLSTM/train.py --phase test --test_set 4 --load_model 324 --batch_around_ped 64
 ```
 To test on your own models, use your train.py and change the arguments of  '--phase', '--train_model','--load_model'
 to 'test','YourModelName','YourModelEpoch'.

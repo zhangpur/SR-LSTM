@@ -20,6 +20,7 @@ class Processor():
         self.load_model()
 
         # self.load_weights_from_srlstm()
+        # self.parameters_update_seton_secondSR()
         # Uncomment to train the second SR layer
 
         if self.args.using_cuda:
@@ -54,6 +55,10 @@ class Processor():
         self.net.gcn.relativeLayer.MLP[0].bias.requires_grad = False
         self.net.gcn.W_nei.MLP[0].weight.requires_grad = False
         self.net.gcn.WAr.MLP[0].weight.requires_grad = False
+
+    def parameters_update_seton(self):
+        for p in self.net.parameters():
+            p.requires_grad=True
 
     def load_weights_from_srlstm(self):
         if self.args.pretrain_load > 0:
@@ -97,7 +102,7 @@ class Processor():
                                         str(self.args.load_model) + '.tar'
             if os.path.isfile(self.args.model_save_path):
                 print('Loading checkpoint')
-                checkpoint = torch.load(self.args.model_save_path)#,map_location={'cuda:1': 'cuda:2'})
+                checkpoint = torch.load(self.args.model_save_path,map_location={'cuda:0': 'cuda:'+str(self.args.gpu)})
                 model_epoch = checkpoint['epoch']
                 self.net.load_state_dict(checkpoint['state_dict'])
                 print('Loaded checkpoint at epoch', model_epoch)
@@ -153,6 +158,7 @@ class Processor():
             return A,Aepoch
         else:
             return B,Bepoch
+
     def train_epoch(self,epoch):
         self.dataloader.reset_batch_pointer(set='train', valid=False)
 
