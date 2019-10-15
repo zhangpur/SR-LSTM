@@ -172,70 +172,6 @@ class DataLoader_bytrajec2():
             data_index=np.append(data_index,data_index[:,:self.args.batch_size],1)
         return data_index
 
-    def get_seq_from_index(self,frameped_dict,pedtraject_dict,data_index,setname):
-        '''
-        Query the trajectories fragments from data sampling index.
-        '''
-        batch_data_mass=[]
-        batch_data=[]
-        batch_id=[]
-
-        if setname=='train':
-            skip=self.trainskip
-            batch_size=self.args.batch_size
-        else:
-            skip=self.testskip
-            batch_size=self.args.test_batch_size
-        for i in range(data_index.shape[1]):
-            if i%100==0:
-                print(i,data_index.shape[1])
-            cur_frame,cur_set,_= data_index[:,i]
-            framestart_pedi=set(frameped_dict[cur_set][cur_frame])
-            try:
-                frameend_pedi=set(frameped_dict[cur_set][cur_frame+self.args.seq_length*skip[cur_set]])
-            except:
-                continue
-            present_pedi=framestart_pedi | frameend_pedi
-            if (framestart_pedi & frameend_pedi).__len__()==0:
-                continue
-            traject=()
-            IFfull=[]
-            for ped in present_pedi:
-
-                cur_trajec, iffull, ifexistobs = self.find_trajectory_fragment(pedtraject_dict[cur_set][ped], cur_frame,
-                                                             self.args.seq_length,skip[cur_set])
-                if len(cur_trajec) == 0:
-                    continue
-                if ifexistobs==False:
-                    # Just ignore trajectories if their data don't exsist at the last obversed time step
-                    continue
-                if sum(cur_trajec[:,0]>0)<5:
-                    #filter trajectories have too few frame data
-                    continue
-                cur_trajec=(cur_trajec[:,1:].reshape(-1,1,self.args.input_size),)
-                traject=traject.__add__(cur_trajec)
-                IFfull.append(iffull)
-            if traject.__len__()<1:
-                continue
-            if sum(IFfull)<1:
-                continue
-            traject_batch=np.concatenate(traject,1)
-            batch_data.append(traject_batch)
-            if setname=='test':
-                real_set=self.args.test_set
-            else:
-                if cur_set>=self.test_set[0]:
-                    real_set=cur_set+len(self.test_set)
-                else:
-                    real_set=cur_set
-            batch_id.append((real_set,cur_frame,))
-            if len(batch_data)==batch_size:
-                batch_data=self.massup_batch(batch_data)
-                batch_data_mass.append((batch_data,batch_id,))
-                batch_data=[]
-                batch_id=[]
-        return batch_data_mass
-
     def get_seq_from_index_balance(self,frameped_dict,pedtraject_dict,data_index,setname):
         '''
         Query the trajectories fragments from data sampling index.
@@ -379,9 +315,6 @@ class DataLoader_bytrajec2():
 
         trainbatchnums=len(trainbatch)
         valbatchnums=len(valbatch)
-
-        #num_batches=int(trainbatchnums/batch_size)
-        #val_num_batches=int(valbatchnums/self.args.val_batch_size)
 
         f = open(cachefile, "wb")
         pickle.dump(( trainbatch, trainbatchnums, valbatch, valbatchnums), f, protocol=2)

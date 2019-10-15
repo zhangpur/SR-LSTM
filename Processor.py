@@ -16,12 +16,12 @@ class Processor():
         self.dataloader = Dataloader(args)
         model=import_class(args.model)
         self.net = model(args)
-        self.set_optimazier()
+        self.set_optimizer()
         self.load_model()
 
         # self.load_weights_from_srlstm()
         # self.parameters_update_seton_secondSR()
-        # Uncomment to train the second SR layer
+        # Uncomment if train the second SR layer
 
         if self.args.using_cuda:
             self.net=self.net.cuda()
@@ -118,7 +118,7 @@ class Processor():
                 self.net.load_state_dict(checkpoint['state_dict'])
                 print('Loaded checkpoint at epoch', model_epoch)
 
-    def set_optimazier(self):
+    def set_optimizer(self):
         self.optimizer = torch.optim.Adam(self.net.parameters(),lr=self.args.learning_rate)
         self.criterion = nn.MSELoss(reduce=False)
 

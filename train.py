@@ -42,8 +42,7 @@ def get_parser():
         '--pretrain_load', default=0,type=int,
         help="load pretrained model from this index. Used in training second states refienemnt layer.")
     parser.add_argument(
-        '--model', default='models.SRLSTM',
-        help='Set model type in \'models.LSTM\', \'models.SRLSTM\', \'models.SocialLSTM\'')
+        '--model', default='models.SR_LSTM')
     ######################################
 
     parser.add_argument(
